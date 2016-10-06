@@ -15,7 +15,6 @@
     public class AuthenticatedChefRequest : RestRequest
     {
         private readonly string client;
-        private string signature = string.Empty;
 
         public AuthenticatedChefRequest(string client, Uri requestUri) : base(requestUri)
         {
@@ -47,7 +46,7 @@
             signer.Init(true, key);
             signer.BlockUpdate(input, 0, input.Length);
 
-            signature = Convert.ToBase64String(signer.GenerateSignature());
+            var signature = Convert.ToBase64String(signer.GenerateSignature());
 
             this.AddHeader("X-Ops-Sign", "algorithm=sha1;version=1.0");
             this.AddHeader("X-Ops-Timestamp", timestamp);
