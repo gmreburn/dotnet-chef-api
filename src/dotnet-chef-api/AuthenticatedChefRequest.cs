@@ -1,4 +1,4 @@
-﻿namespace mattberther.chef
+﻿namespace EBSCO.ChefApi
 {
     using Org.BouncyCastle.Crypto;
     using Org.BouncyCastle.Crypto.Digests;

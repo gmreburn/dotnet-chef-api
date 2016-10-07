@@ -1,4 +1,4 @@
-﻿namespace mattberther.chef.unittests
+﻿namespace EBSCO.ChefApi.Tests
 {
     using System;
     using System.IO;
