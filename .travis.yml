@@ -2,8 +2,9 @@ language: csharp
 solution: dotnet-chef-api.sln
 script:
   - mono ./packages/NUnit.ConsoleRunner.3.4.1/tools/nunit3-console.exe ./src/unittests/bin/Release/EBSCO.ChefServer.Tests.dll
-  - wget -O ./nuget.exe https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
-  - mono ./nuget.exe # Output NuGet's version number
-  - mono ./nuget.exe set ApiKey $NugetApiKey
-  - mono ./nuget.exe pack ./src/dotnet-chef-api/EBSCO.ChefServerApi.csproj -IncludeReferencedProjects
-  - mono ./nuget.exe push ./src/dotnet-chef-api/Ebsco.ChefServer.Api.nupkg
+  - mkdir -p .nuget
+  - wget -O .nuget/nuget.exe https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
+  - mono .nuget/nuget.exe # Output NuGet's version number
+  - mono .nuget/nuget.exe set ApiKey $NugetApiKey
+  - mono .nuget/nuget.exe pack ./src/dotnet-chef-api/EBSCO.ChefServerApi.csproj -IncludeReferencedProjects
+  - mono .nuget/nuget.exe push ./src/dotnet-chef-api/Ebsco.ChefServer.Api.nupkg
