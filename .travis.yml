@@ -4,12 +4,13 @@ language: csharp
 mono: none
 dotnet: 1.0.0-preview2-003121
 before_install:
-  - mkdir -p .nuget
+  #- mkdir -p .nuget
   #- wget -O .nuget/nuget.exe https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
   #- mono nuget.exe # Output NuGet's version number
-  - mono nuget.exe setApiKey $NugetApiKey
+  - nuget # Output NuGet's version number
+  - nuget set ApiKey $NugetApiKey
 install:
-  - mono nuget.exe restore -Verbosity detailed
+  - nuget restore -Verbosity detailed
 script:
   - xbuild dotnet-chef-api.sln
   - mono ./packages/NUnit.ConsoleRunner.3.4.1/tools/nunit3-console.exe ./src/unittests/bin/Release/EBSCO.ChefServer.Tests.dll
