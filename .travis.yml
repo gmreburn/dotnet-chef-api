@@ -1,8 +1,7 @@
 language: csharp
 solution: dotnet-chef-api.sln
-install:
-  - nuget update -self
-  - nuget restore
+before_install:
+  - sudo nuget update -self
 script:
   - xbuild dotnet-chef-api.sln
   - mono ./packages/NUnit.ConsoleRunner.3.4.1/tools/nunit3-console.exe ./src/unittests/bin/Release/EBSCO.ChefServer.Tests.dll
