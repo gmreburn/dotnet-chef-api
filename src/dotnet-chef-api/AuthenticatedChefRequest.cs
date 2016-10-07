@@ -20,7 +20,6 @@
         public AuthenticatedChefRequest(string client, Uri requestUri) : base(requestUri)
         {
             this.client = client;
-            this.AddHeader("Accept", "application/json");
             this.AddHeader("X-Chef-Version", "11.4.0");
             this.AddHeader("X-Ops-UserId", client);
         }

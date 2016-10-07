@@ -9,20 +9,6 @@
     public class AuthenticatedChefRequestUnitTests
     {
         [Test]
-        public void ConstructorSetsAcceptHeader()
-        {
-            // Arrange
-            var client = "gmreburn";
-            var resource = new Uri("/", UriKind.Relative);
-
-            // Act
-            var request = new AuthenticatedChefRequest(client, resource);
-
-            // Assert
-            Assert.AreEqual("application/json", request.Parameters.Single(p => p.Name.Equals("Accept")).Value);
-        }
-
-        [Test]
         public void ConstructorSetsChefVersionHeader()
         {
             // Arrange
