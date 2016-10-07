@@ -1,4 +1,4 @@
-﻿# .NET Chef API [![Build Status](https://travis-ci.org/gmreburn/dotnet-chef-api.svg?branch=tests)](https://travis-ci.org/gmreburn/dotnet-chef-api)
+﻿# .NET Chef API [![Build Status](https://travis-ci.org/gmreburn/dotnet-chef-api.svg?branch=master)](https://travis-ci.org/gmreburn/dotnet-chef-api)
 This is a simple C# class library used to interact with a Chef Server's REST API. You can use this with a open source and Enterprise versions of the Chef Server.
 
 ## Usage
