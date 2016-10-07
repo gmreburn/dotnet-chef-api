@@ -1,10 +1,10 @@
 language: csharp
 solution: dotnet-chef-api.sln
 install:
-  - NuGet restore
+  - nuget restore
 script:
   - xbuild dotnet-chef-api.sln
   - mono ./packages/NUnit.ConsoleRunner.3.4.1/tools/nunit3-console.exe ./src/unittests/bin/Release/EBSCO.ChefServer.tests.dll
-  - NuGet setApiKey $NugetApiKey
-  - NuGet pack ./src/dotnet-chef-api/EBSCO.ChefServerApi.csproj
-  - NuGet push ./src/dotnet-chef-api/Ebsco.ChefServer.Api.nupkg
+  - nuget setApiKey $NugetApiKey
+  - nuget pack ./src/dotnet-chef-api/EBSCO.ChefServerApi.csproj
+  - nuget push ./src/dotnet-chef-api/Ebsco.ChefServer.Api.nupkg
