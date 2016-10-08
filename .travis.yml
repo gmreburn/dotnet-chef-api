@@ -2,16 +2,13 @@ sudo: required
 dist: trusty
 language: csharp
 mono: latest
-before_install:
+script:
+  #dotnet build
   - mkdir -p .nuget
   - wget -O .nuget/nuget.exe https://dist.nuget.org/win-x86-commandline/v3.4.4/NuGet.exe
   - mono .nuget/nuget.exe # Output NuGet's version number
   - mono .nuget/nuget.exe setApiKey $NugetApiKey -Verbosity quiet
-  - nuget
-install:
   - mono .nuget/nuget.exe restore
-script:
-  #dotnet build
   - xbuild dotnet-chef-api.sln /p:Configuration=Release
   - mono ./packages/NUnit.ConsoleRunner.3.4.1/tools/nunit3-console.exe ./src/unittests/bin/Release/EBSCO.ChefServer.Tests.dll
   - .nuget/nuget.exe pack -help
