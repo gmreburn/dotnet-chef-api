@@ -1,26 +1,27 @@
 sudo: required
 dist: trusty
 language: csharp
-mono: none
-dotnet: 1.0.0-preview2-003121
+mono: latest
 before_install:
-  #- mkdir -p .nuget
-  #- wget -O .nuget/nuget.exe https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
-  #- mono nuget.exe # Output NuGet's version number
-  - nuget # Output NuGet's version number
-  - nuget set ApiKey $NugetApiKey
+  - mkdir -p .nuget
+  - wget -O .nuget/nuget.exe https://dist.nuget.org/win-x86-commandline/v3.4.4/NuGet.exe
+  - mono .nuget/nuget.exe # Output NuGet's version number
+  - mono .nuget/nuget.exe set ApiKey $NugetApiKey
 install:
-  - nuget restore -Verbosity detailed
+  - mono .nuget/nuget.exe restore
+  #- nuget restore -Verbosity detailed
 script:
+  #dotnet build
   - xbuild dotnet-chef-api.sln
   - mono ./packages/NUnit.ConsoleRunner.3.4.1/tools/nunit3-console.exe ./src/unittests/bin/Release/EBSCO.ChefServer.Tests.dll
 deploy:
   provider: script
   script: 
-    - nuget pack -help
-    - nuget pack -sym
-    - nuget pack -sym ./src/dotnet-chef-api/EBSCO.ChefServerApi.csproj -IncludeReferencedProjects
-    - nuget pack -sym PAL.EPKB.csproj -IncludeReferencedProjects #-Version %BuildMajor%.%BuildMinor%.%BuildRevision%.%BuildNumber% -Prop Configuration=Release
+    - n.nuget/uget.exe pack -help
+    - .nuget/nuget.exe pack -sym
+    - .nuget/nuget.exe pack -sym ./src/dotnet-chef-api/EBSCO.ChefServerApi.csproj -IncludeReferencedProjects
+    - .nuget/nuget.exe pack -sym PAL.EPKB.csproj -IncludeReferencedProjects #-Version %BuildMajor%.%BuildMinor%.%BuildRevision%.%BuildNumber% -Prop Configuration=Release
+    - .nuget/nuget.exe pack PAL.EPKB.csproj -IncludeReferencedProjects
     #- mono .nuget/nuget.exe push ./src/dotnet-chef-api/Ebsco.ChefServer.Api.nupkg
   on:
     branch: test
