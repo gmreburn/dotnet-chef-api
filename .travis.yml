@@ -11,11 +11,11 @@ script:
   - mono .nuget/nuget.exe restore
   - xbuild dotnet-chef-api.sln /p:Configuration=Release
   - mono ./packages/NUnit.ConsoleRunner.3.4.1/tools/nunit3-console.exe ./src/unittests/bin/Release/EBSCO.ChefServer.Tests.dll
-  - .nuget/nuget.exe pack -help
-  - .nuget/nuget.exe pack -sym
-  - .nuget/nuget.exe pack -sym ./src/dotnet-chef-api/EBSCO.ChefServerApi.csproj -IncludeReferencedProjects
-  #- .nuget/nuget.exe pack -sym ./src/dotnet-chef-api/EBSCO.ChefServerApi.csproj -IncludeReferencedProjects #-Version %BuildMajor%.%BuildMinor%.%BuildRevision%.%BuildNumber% -Prop Configuration=Release
-  - .nuget/nuget.exe pack ./src/dotnet-chef-api/EBSCO.ChefServerApi.csproj -IncludeReferencedProjects
+  - mono .nuget/nuget.exe pack -help
+  - mono .nuget/nuget.exe pack -sym
+  - mono .nuget/nuget.exe pack -sym ./src/dotnet-chef-api/EBSCO.ChefServerApi.csproj -IncludeReferencedProjects
+  #- mono .nuget/nuget.exe pack -sym ./src/dotnet-chef-api/EBSCO.ChefServerApi.csproj -IncludeReferencedProjects #-Version %BuildMajor%.%BuildMinor%.%BuildRevision%.%BuildNumber% -Prop Configuration=Release
+  - mono .nuget/nuget.exe pack ./src/dotnet-chef-api/EBSCO.ChefServerApi.csproj -IncludeReferencedProjects
 deploy:
   provider: script
   script: 
