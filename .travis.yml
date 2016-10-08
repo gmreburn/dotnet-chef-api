@@ -12,12 +12,12 @@ install:
   #- nuget restore -Verbosity detailed
 script:
   #dotnet build
-  - xbuild dotnet-chef-api.sln
+  - xbuild dotnet-chef-api.sln /p:Configuration=Release
   - mono ./packages/NUnit.ConsoleRunner.3.4.1/tools/nunit3-console.exe ./src/unittests/bin/Release/EBSCO.ChefServer.Tests.dll
 deploy:
   provider: script
   script: 
-    - n.nuget/uget.exe pack -help
+    - .nuget/uget.exe pack -help
     - .nuget/nuget.exe pack -sym
     - .nuget/nuget.exe pack -sym ./src/dotnet-chef-api/EBSCO.ChefServerApi.csproj -IncludeReferencedProjects
     - .nuget/nuget.exe pack -sym PAL.EPKB.csproj -IncludeReferencedProjects #-Version %BuildMajor%.%BuildMinor%.%BuildRevision%.%BuildNumber% -Prop Configuration=Release
