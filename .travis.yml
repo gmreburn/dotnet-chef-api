@@ -17,8 +17,8 @@ script:
   - .nuget/nuget.exe pack -help
   - .nuget/nuget.exe pack -sym
   - .nuget/nuget.exe pack -sym ./src/dotnet-chef-api/EBSCO.ChefServerApi.csproj -IncludeReferencedProjects
-  - .nuget/nuget.exe pack -sym PAL.EPKB.csproj -IncludeReferencedProjects #-Version %BuildMajor%.%BuildMinor%.%BuildRevision%.%BuildNumber% -Prop Configuration=Release
-  - .nuget/nuget.exe pack PAL.EPKB.csproj -IncludeReferencedProjects
+  #- .nuget/nuget.exe pack -sym ./src/dotnet-chef-api/EBSCO.ChefServerApi.csproj -IncludeReferencedProjects #-Version %BuildMajor%.%BuildMinor%.%BuildRevision%.%BuildNumber% -Prop Configuration=Release
+  - .nuget/nuget.exe pack ./src/dotnet-chef-api/EBSCO.ChefServerApi.csproj -IncludeReferencedProjects
 deploy:
   provider: script
   script: 
