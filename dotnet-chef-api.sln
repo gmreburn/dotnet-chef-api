@@ -9,7 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EBSCO.ChefServerApi.Tests",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{881A6CBA-4114-4E4D-9A62-0BA25A4EC7D9}"
 	ProjectSection(SolutionItems) = preProject
-		.travis.yml = .travis.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
