@@ -52,7 +52,6 @@
             this.AddHeader("X-Ops-Sign", "algorithm=sha1;version=1.0");
             this.AddHeader("X-Ops-Timestamp", timestamp);
             this.AddHeader("X-Ops-Content-Hash", ToBase64EncodedSha1String(GetBody()));
-            //this.AddHeader("Host", string.Format("{0}:{1}", this.Resource, requestUri.Port)); // TODO this might be taken care of by restsharp
 
             if (Method != Method.GET)
             {
