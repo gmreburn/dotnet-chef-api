@@ -11,6 +11,7 @@
     using System.Linq;
     using System.Security.Cryptography;
     using System.Text;
+    using gmreburn;
 
     public class AuthenticatedChefRequest : RestRequest
     {

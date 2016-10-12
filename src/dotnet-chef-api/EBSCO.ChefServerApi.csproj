@@ -37,6 +37,10 @@
       <HintPath>..\..\lib\BouncyCastle.Crypto.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
+    <Reference Include="gmreburn.SystemTime, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\gmreburn.SystemTime.1.0.7\lib\net461\gmreburn.SystemTime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\RestSharp.105.2.3\lib\net452\RestSharp.dll</HintPath>
       <Private>True</Private>
@@ -47,7 +51,6 @@
   <ItemGroup>
     <Compile Include="AuthenticatedChefRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SystemTime.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="EBSCO.ChefServerApi.nuspec" />
