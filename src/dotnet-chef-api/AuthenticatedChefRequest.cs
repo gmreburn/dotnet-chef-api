@@ -1,4 +1,4 @@
-﻿namespace EBSCO.ChefApi
+﻿namespace EBSCO.ChefServer
 {
     using Org.BouncyCastle.Crypto;
     using Org.BouncyCastle.Crypto.Digests;
@@ -15,7 +15,7 @@
     public class AuthenticatedChefRequest : RestRequest
     {
         private readonly string client;
-
+        
         public AuthenticatedChefRequest(string client, Uri requestUri) : base(requestUri)
         {
             this.client = client;
@@ -25,7 +25,7 @@
 
         public void Sign(string privateKey)
         {
-            string timestamp = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ");
+            string timestamp = SystemTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ");
 
             string canonicalHeader =
                 string.Format(
