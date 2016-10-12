@@ -76,7 +76,7 @@
             Assert.IsNotNull(request.Parameters.Single(p => p.Name.Equals("X-Ops-Content-Hash")).Value);
         }
 
-        [Test]
+        [Test, Ignore("WIP - I am experimenting with this test..")]
         public void SignProducesValidSignature()
         {
             // Arrange
