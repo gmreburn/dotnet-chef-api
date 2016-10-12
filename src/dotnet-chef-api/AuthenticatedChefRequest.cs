@@ -1,4 +1,4 @@
-﻿namespace mattberther.chef
+﻿namespace EBSCO.ChefApi
 {
     using Org.BouncyCastle.Crypto;
     using Org.BouncyCastle.Crypto.Digests;
@@ -15,12 +15,10 @@
     public class AuthenticatedChefRequest : RestRequest
     {
         private readonly string client;
-        private string signature = string.Empty;
 
         public AuthenticatedChefRequest(string client, Uri requestUri) : base(requestUri)
         {
             this.client = client;
-            this.AddHeader("Accept", "application/json");
             this.AddHeader("X-Chef-Version", "11.4.0");
             this.AddHeader("X-Ops-UserId", client);
         }
@@ -48,7 +46,7 @@
             signer.Init(true, key);
             signer.BlockUpdate(input, 0, input.Length);
 
-            signature = Convert.ToBase64String(signer.GenerateSignature());
+            var signature = Convert.ToBase64String(signer.GenerateSignature());
 
             this.AddHeader("X-Ops-Sign", "algorithm=sha1;version=1.0");
             this.AddHeader("X-Ops-Timestamp", timestamp);
