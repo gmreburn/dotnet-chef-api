@@ -9,12 +9,12 @@ Using the class library is relatively straightforward. First, you create an Auth
 Some example code is:
 
 	System.Uri baseUri = new System.Uri("https://api.opscode.com");
-	System.Uri requestUri = new System.Uri(baseUri, "/organizations/organization_name/roles");
-	EBSCO.ChefApi.AuthenticatedChefRequest authenticatedRequest = new EBSCO.ChefApi.AuthenticatedChefRequest("client_name", requestUri);
+    System.Uri requestUri = new System.Uri(baseUri, "/organizations/organization_name/roles");
+    EBSCO.ChefApi.AuthenticatedChefRequest authenticatedRequest = new EBSCO.ChefApi.AuthenticatedChefRequest("client_name", requestUri);
 
-	authenticatedRequest.Sign(System.IO.File.ReadAllText("privatekey.pem"));
+    authenticatedRequest.Sign(System.IO.File.ReadAllText("privatekey.pem"));
 
-	RestSharp.IRestClient client = new RestSharp.RestClient(baseUri);
-	RestSharp.IRestResponse response = client.Execute(authenticatedRequest);
-	System.Console.WriteLine(response.Content);
+    RestSharp.IRestClient client = new RestSharp.RestClient(baseUri);
+    RestSharp.IRestResponse response = client.Execute(authenticatedRequest);
+    System.Console.WriteLine(response.Content);
 
