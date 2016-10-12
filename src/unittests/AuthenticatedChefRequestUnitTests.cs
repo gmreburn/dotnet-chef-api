@@ -3,6 +3,7 @@
     using System;
     using System.IO;
     using System.Linq;
+    using gmreburn;
     using NUnit.Framework;
 
     [TestFixture]
@@ -76,21 +77,23 @@
             Assert.IsNotNull(request.Parameters.Single(p => p.Name.Equals("X-Ops-Content-Hash")).Value);
         }
 
-        [Test, Ignore("WIP - I am experimenting with this test..")]
+        [Test]
         public void SignProducesValidSignature()
         {
             // Arrange
+            SystemTime.UtcNow = default(DateTime);
             var request = new AuthenticatedChefRequest("test", new Uri("/", UriKind.Relative));
 
             // Act
             request.Sign(File.ReadAllText(Path.Combine(TestContext.CurrentContext.TestDirectory, "test.pem")));
 
             // Assert
-            var header = string.Join("",
-                request.Parameters.Where(p => p.Name.Contains("X-Ops-Authorization-"))
-                    .Select(p => p.Value)
-                    .Aggregate((i, j) => string.Format("{0}{1}", i, j)));
-            Assert.AreEqual("Q4K0MxTyb5+JjCWmlKUUWAZwDNZYb2wDg5RBkBbD9ORmM5xleQwIoIUYwqqa756oiHu8Cz/VT7X0ToFJnCYSfohlrGwIgYYmNA1d6LxvzmBAXvnhaJHaU7XJ3fROCDe/YVhPGSJIj9bKdJLGvg2dpKCZTxn9m0z2ZT6ObjBOyufGsbyauNdjLmhOboVtLOTw966tOSiCnqNRLyR7LsUtQsZJ1IVCMZu8Prqj9yWAA264ul13rFhyvIkj53b4N6AmKrV9BolkQM4OYsVdTQbovXwcD1XWboNFXtEYDZwPUHtqLrVu4BDGpsypdZ0cdXbMkhmSfvrCGdHT8+fZwx4uSg==", header);
+            Assert.AreEqual("o5/7MhzNGzhenMDwVrKVHFYHTyOVnJy1ww+NsUzxxElbeNKxA7Gz277VIGre", request.Parameters.Single(p => p.Name.Equals("X-Ops-Authorization-1")).Value);
+            Assert.AreEqual("eQLc+3sBPAMJrfIbdV5qCgL47Hm5qzUwn7vL9Z+I0NG5f4X4vmgync3jFxCB", request.Parameters.Single(p => p.Name.Equals("X-Ops-Authorization-2")).Value);
+            Assert.AreEqual("821RyF4duDUhSgstpshhjZa0heNn+7pYhRjg0LBfpPxkjoV555o250GpwD/r", request.Parameters.Single(p => p.Name.Equals("X-Ops-Authorization-3")).Value);
+            Assert.AreEqual("1ZAMh3uI/ihMNVO0pyM6IwVtmEgjLKHdLvph8R9PB+LBkOH9HZCv+wVZOz9h", request.Parameters.Single(p => p.Name.Equals("X-Ops-Authorization-4")).Value);
+            Assert.AreEqual("y8DlrRAXdMQ44iXEsrqsAwDGbZDk4u9BRyS+PDqgGTInTwi/Dn4CxJpJ79oG", request.Parameters.Single(p => p.Name.Equals("X-Ops-Authorization-5")).Value);
+            Assert.AreEqual("M1tGWo7KhieFpDRrbZVX9ft0ziiNsBEFY9PFNYmV+Q==", request.Parameters.Single(p => p.Name.Equals("X-Ops-Authorization-6")).Value);
         }
     }
 }
