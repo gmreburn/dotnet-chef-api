@@ -11,7 +11,7 @@
     using System.Linq;
     using System.Security.Cryptography;
     using System.Text;
-    using gmreburn;
+    using NutsAndBrackets;
 
     public class AuthenticatedChefRequest : RestRequest
     {
@@ -24,7 +24,7 @@
             this.AddHeader("X-Ops-UserId", client);
         }
 
-        public void Sign(string privateKey)
+        public AuthenticatedChefRequest Sign(string privateKey)
         {
             string timestamp = SystemTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ");
 
@@ -64,6 +64,8 @@
             {
                 this.AddHeader(string.Format("X-Ops-Authorization-{0}", i++), line);
             }
+
+            return this;
         }
 
         private string ToBase64EncodedSha1String(string input)

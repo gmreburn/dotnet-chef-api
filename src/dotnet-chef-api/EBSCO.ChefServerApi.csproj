@@ -39,8 +39,8 @@
       <HintPath>..\..\lib\BouncyCastle.Crypto.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
-    <Reference Include="gmreburn.SystemTime, Version=1.0.11.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\gmreburn.SystemTime.1.0.11\lib\net20\gmreburn.SystemTime.dll</HintPath>
+    <Reference Include="NutsAndBrackets.SystemTime, Version=1.0.64.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NutsAndBrackets.SystemTime.1.0.64\lib\net461\NutsAndBrackets.SystemTime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
@@ -53,12 +53,24 @@
   <ItemGroup>
     <Compile Include="AuthenticatedChefRequest.cs" />
     <Compile Include="ChefServerApiClient.cs" />
+    <Compile Include="Models\Attribute.cs" />
+    <Compile Include="Models\Class1.cs" />
+    <Compile Include="Models\CookBook.cs" />
+    <Compile Include="Models\Dependency.cs" />
+    <Compile Include="Models\License.cs" />
+    <Compile Include="Models\Metadata.cs" />
+    <Compile Include="Models\Platform.cs" />
+    <Compile Include="Models\Recipe.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\RootFile.cs" />
+    <Compile Include="Models\Template.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="EBSCO.ChefServerApi.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
