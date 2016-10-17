@@ -9,7 +9,7 @@
     [TestClass]
     public class ChefServerApiClientTests
     {
-        [TestMethod]
+        [TestMethod, Ignore]
         public void TestMethod1()
         {
             // Arrange
@@ -24,7 +24,7 @@
             Assert.AreEqual("11.4.0", resp);
         }
 
-        [TestMethod]
+        [TestMethod, Ignore]
         public void Test_Stubbed()
         {
             // Arrange
